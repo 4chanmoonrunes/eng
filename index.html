@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>moonrunes adapter 4chan</title>
+</head>
+<body>
+
+<label>Enter 4chan moonrunes here: </label><br/>
+<textarea id="texthere" rows="4" cols="50">
+</textarea> 
+<button onclick="myFunction()">Translate</button> <br/>
+
+<script>
+function myFunction() {
+
+	var letters={	A:'А',a:'а',B:'Б',e:'е',
+					K:'К',k:'к',M:'М',m:'м',
+					O:'О',o:'о',P:'Р',p:'р',
+					C:'С',c:'с',T:'Т',Y:'У',
+					y:'у',X:'Х',x:'х'		};
+	var letterRegexp=new RegExp(Object.keys(letters).join('|'),'g');
+	
+	function replaceIt(text){
+		return text.replace(letterRegexp, function(letter){
+											return letters[letter];
+										}
+							);
+							
+	}
+		
+	var url = "https://translate.google.com/#auto/en/";
+	var urlsub = replaceIt(document.getElementById("texthere").value);
+	window.location.href = url+urlsub;
+}
+</script>
+</body>
+</html>
